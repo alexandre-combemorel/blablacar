@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import BbcApp from './BbcApp';
 import {app} from "../services/contants/textContent";
+// Components
+import BbcApp from './BbcApp';
 
 test('renders Blablacar app', () => {
   render(<BbcApp />);

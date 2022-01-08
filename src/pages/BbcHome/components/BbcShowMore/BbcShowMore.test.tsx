@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+// Components
 import {BbcShowMore} from './BbcShowMore';
 // Mock data & constants
 import userEvent from "@testing-library/user-event";

@@ -1,0 +1,10 @@
+@import '../styleguide';
+
+.blablacar-app {
+  background-color: $primary-color;
+  min-height: 100vh;
+  color: $primary-color-text;
+  &__header {
+    text-align: center;
+  }
+}

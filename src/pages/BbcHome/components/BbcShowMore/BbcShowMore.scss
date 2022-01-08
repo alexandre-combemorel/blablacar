@@ -1,0 +1,7 @@
+@import '../../../../styleguide';
+.bbc-pagination {
+    display: flex;
+    &__page {
+        padding: $space-xs;
+    }
+}

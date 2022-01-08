@@ -1,0 +1,8 @@
+@import '../../styleguide';
+.bbc-error {
+    text-align: center;
+    color: red;
+    background: #ffb0b0;
+    padding: $space-m $space-s;
+    border: solid red 1px;
+}

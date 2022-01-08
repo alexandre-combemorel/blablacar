@@ -1,0 +1,18 @@
+@import '../../../../styleguide';
+
+.bbc-trip {
+    display: flex;
+    flex-direction: column;
+    padding: $space-s;
+    margin: $space-s 0;
+    border: solid white 1px;
+    &__line, &__details__line {
+        display: flex;
+        &__title {
+            font-weight: bold;
+        }
+        &--right {
+            justify-content: right;
+        }
+    }
+}

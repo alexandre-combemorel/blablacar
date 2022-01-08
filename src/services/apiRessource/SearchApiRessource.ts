@@ -1,5 +1,5 @@
 import BaseApiRessource from "./BaseApiRessource";
-import {tripsReqParamInterface, tripsResultsInterface} from "../../models/SearchInterface";
+import {TripsReqParamInterface, TripsResultsInterface} from "../../models/SearchInterface";
 
 class SearchApiRessource extends BaseApiRessource {
 
@@ -8,7 +8,7 @@ class SearchApiRessource extends BaseApiRessource {
     }
 
     public getTrips({from, to}: {from: string, to: string}, cursor?: string) {
-        const params: tripsReqParamInterface = {
+        const params: TripsReqParamInterface = {
             from_coordinate: from,
             to_coordinate: to,
             from_country: 'FR',
@@ -18,7 +18,7 @@ class SearchApiRessource extends BaseApiRessource {
             currency: 'EUR'
         }
         if (cursor) params.next_cursor = cursor
-        return this.get<tripsResultsInterface>('', {params});
+        return this.get<TripsResultsInterface>('', {params});
     }
 }
 

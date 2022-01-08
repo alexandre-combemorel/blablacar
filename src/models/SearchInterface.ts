@@ -1,4 +1,4 @@
-export interface tripsReqParamInterface {
+export interface TripsReqParamInterface {
   from_coordinate: string
   to_coordinate: string
   from_country: string
@@ -9,7 +9,7 @@ export interface tripsReqParamInterface {
   next_cursor?: string
 }
 
-export interface tripsResultsInterface {
+export interface TripsResultsInterface {
   link: string
   next_cursor: string
   search_info: {

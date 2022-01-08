@@ -1,6 +1,44 @@
-# Getting Started with Create React BbcApp
+# How to
 
-This project was bootstrapped with [Create React BbcApp](https://github.com/facebook/create-react-app).
+## Run the project
+You should have a `.env.local` set up with the api key inside
+Put it at the root of the project
+```shell
+REACT_APP_API_KEY=myApiKeyHere
+```
+
+Then run `npm start`
+
+## Structure and concept of the project
+
+### Techno used
+this project is using:
+- Typescript > 4.5
+- React Testing library
+- React > 17
+
+### Core structure
+The main folder are:
+- `models`: contains all the type / interface used through the app
+- `components`: which will have all the shared components through the app
+- `pages`: which will have all the page and a folder structure inside
+- `services`: which will contains all the necessary apiRessource call and constants for the overall app
+- `test`: will have the `mockData` folder used for mocking the data on test api call and the helpers for testing files 
+files:
+- `styleguide.scss`: which contains the basic variables used on the app to provide consistency on the styles
+
+### Components folder
+a component folder is structured with sub folder which are described below: (the usage of what's described is only for the current component not outside)
+- `components`: contains the sub components used in the current component 
+- `services`: which contains all the helpers / constant / api calls files for the current component
+and files:
+- `.test.tsx`: which will be the "unit" test of the current component
+- `.scss`: which will have styles scoped to the component
+
+
+## Getting Started with Create React BbcApp
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 

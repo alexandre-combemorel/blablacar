@@ -4,28 +4,30 @@ import './BbcHome.scss'
 // Components
 import {BbcError} from "../../components/Error/BbcError";
 import {BbcTrip} from "./components/BbcTrip/BbcTrip";
+import {BbcShowMore} from "./components/BbcShowMore/BbcShowMore";
 // API
 import SearchApiRessource from "../../services/apiRessource/SearchApiRessource";
 // Constants && types
 import {error} from "../../services/contants/errorContent";
 import {TripType} from "../../models/SearchInterface";
-import {BbcShowMore} from "./components/BbcShowMore/BbcShowMore";
+import {app} from "../../services/contants/textContent";
 
 
 const tripsApi = new SearchApiRessource()
 export function BbcHome() {
 
-  // List of states
+  // ------- States ---------
   const [errorText, setErrorText] = useState<string | undefined>()
   const [listTrips, setListTrips] = useState<TripType[]>([])
   const [nextCursor, setNextCursor] = useState<string | undefined>()
   const [isLoading, setIsLoading] = useState(true)
 
+  // -------- Functions ---------
   const clearError = () => {
     setErrorText(undefined)
   }
 
-  // Fetch trips according to cities location and page cursor availability
+  // Fetch trips according to cities locations and page cursor availability
   const getTrips = async () => {
     setIsLoading(true)
     const coordinates = {
@@ -45,6 +47,7 @@ export function BbcHome() {
     }
   }
 
+  // ---------- Hooks ---------
   // Make sure first load provide the first 10 results
   useEffect(() => {
     getTrips()
@@ -54,7 +57,9 @@ export function BbcHome() {
     <h2>Trips from Paris to Lyon</h2>
     {errorText && <BbcError text={errorText} onConfirm={clearError}/>}
     <div className="bbc-home__trips">
-      {listTrips.map((trip, index) => <BbcTrip key={`${trip.link}${index}`} trip={trip}/>)}
+      {listTrips.length === 0
+        ? app.loading
+        : listTrips.map((trip, index) => <BbcTrip key={`${trip.link}${index}`} trip={trip}/>)}
     </div>
     <div className="bbc-home__pagination">
       {nextCursor && <BbcShowMore onShowMoreClick={getTrips} isLoading={isLoading}/>}

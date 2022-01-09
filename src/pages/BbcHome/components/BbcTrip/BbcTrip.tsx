@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 // style
 import './BbcTrips.scss'
+// Api
+import TripsApiRessource from "../../../../services/apiRessource/TripApiRessource";
 // Types & constants
 import {TripType} from "../../../../models/SearchInterface";
-import TripsApiRessource from "../../../../services/apiRessource/TripApiRessource";
 import {TripResultInterface} from "../../../../models/TripInterface";
 import {app} from "../../../../services/contants/textContent";
 import {error} from "../../../../services/contants/errorContent";
@@ -15,10 +16,14 @@ interface BbcTripsInterface {
 const apiTrip = new TripsApiRessource()
 
 export function BbcTrip(props: BbcTripsInterface) {
+  // Constants
   const tripId = new URL(props.trip.link).searchParams.get('id')
+
+  // ----- States -----
   const [tripInfo, setTripInfo] = useState<TripResultInterface | undefined>()
   const [isLoading, setIsLoading] = useState(false)
 
+  // ----- Functions -----
   const getTripInformation = async () => {
     setIsLoading(true)
     try {
@@ -52,10 +57,10 @@ export function BbcTrip(props: BbcTripsInterface) {
 
     {isLoading && <div>{app.loading}</div> }
     {tripInfo && <div className={"bbc-trip__details"}>
-        <div className={"bbc-trip__details__line"}>
+      {tripInfo.car && <div className={"bbc-trip__details__line"}>
             <div className={"bbc-trip__details__line__title"}>{app.carPicture}:</div>
-            {/*<div className={"bbc-trip__details__line__content"}><img src={tripInfo.car.picture}/></div>*/}
-        </div>
+            <div className={"bbc-trip__details__line__content"}><img src={tripInfo.car.picture}/></div>
+        </div>}
         <div className={"bbc-trip__details__line"}>
             <div className={"bbc-trip__details__line__title"}>{app.comment}:</div>
             <div className={"bbc-trip__details__line__content"}>{tripInfo.comment}</div>
